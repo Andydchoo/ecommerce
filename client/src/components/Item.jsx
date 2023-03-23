@@ -1,16 +1,15 @@
-import React from "react";
-import { useState } from "react-redux";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
-import AddIcon from "@mui/material/Add";
-import RemoveIcon from "@mui/material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../theme";
 import { addToCart } from "../state";
 import { useNavigate } from "react-router-dom";
 
 export default function Item({ item, width }) {
-  const navgiate = useNavigate();
-  const dispatchers = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const {
@@ -43,7 +42,7 @@ export default function Item({ item, width }) {
           style={{ cursor: "pointer" }}
         />
         <Box
-          display={isHovered ? "blocked" : "none"}
+          display={isHovered ? "block" : "none"}
           position="absolute"
           bottom="10%"
           left="0"
@@ -58,24 +57,21 @@ export default function Item({ item, width }) {
               backgroundColor={shades.neutral[100]}
               borderRadius="3px"
             >
-              <IconButton
-                onClick={() => setCount(Math.max(count -1, 1))}
-              >
+              <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
                 <RemoveIcon />
               </IconButton>
               <Typography color={shades.primary[300]}>{count}</Typography>
-              <IconButton
-                onClick={() => setCount(count + 1)}
-              >
+              <IconButton onClick={() => setCount(count + 1)}>
                 <AddIcon />
               </IconButton>
             </Box>
 
             {/* BUTTON */}
             <Button
-              onClick={()=>{dispatch(addToCart({item:{...item, count}}));
-            }}
-            sx={{ backgroundColor: shades.primary[300], color: "white"}}
+              onClick={() => {
+                dispatch(addToCart({ item: { ...item, count } }));
+              }}
+              sx={{ backgroundColor: shades.primary[300], color: "white" }}
             >
               Add To Cart
             </Button>
@@ -85,13 +81,11 @@ export default function Item({ item, width }) {
 
       <Box mt="3px">
         <Typography variant="subtitle2" color={neutral.dark}>
-          {category.replace(/([A-Z])/g, " $1")
-            .replace(/^./, (str) => str.toUpperCase())
-          }
+          {category
+            .replace(/([A-Z])/g, " $1")
+            .replace(/^./, (str) => str.toUpperCase())}
         </Typography>
-        <Typography>
-          {name}
-        </Typography>
+        <Typography>{name}</Typography>
         <Typography fontWeight="bold">{price}</Typography>
       </Box>
     </Box>
