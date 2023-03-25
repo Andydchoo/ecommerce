@@ -35,8 +35,8 @@ export default function Item({ item, width }) {
       >
         <img
           alt={item.name}
-          width="300px"
-          height="400px"
+          width="320px"
+          height="480px"
           src={`http://localhost:1337${url}`}
           onClick={() => navigate(`/item/${item.id}`)}
           style={{ cursor: "pointer" }}

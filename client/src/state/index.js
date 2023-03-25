@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isCartOpen: false,
   cart: [],
   items: [],
-}
+};
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -19,7 +19,7 @@ export const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload.id)
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
 
     increaseCount: (state, action) => {
@@ -42,8 +42,8 @@ export const cartSlice = createSlice({
 
     setIsCartOpen: (state) => {
       state.isCartOpen = !state.isCartOpen;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -52,7 +52,7 @@ export const {
   removeFromCart,
   increaseCount,
   decreaseCount,
-  setIsCartOpen
+  setIsCartOpen,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
